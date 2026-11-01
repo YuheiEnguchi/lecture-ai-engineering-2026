@@ -1,0 +1,72 @@
+{
+  "config": {
+    "base_model": "Qwen/Qwen3.5-0.8B",
+    "revision": "2fc06364715b967f1860aea9cf38778875588b17",
+    "seed": 42,
+    "num_train_epochs": 10,
+    "warmup_steps": 10,
+    "lr": 0.0002,
+    "lora_r": 16,
+    "lora_alpha": 32,
+    "max_seq_len": 768,
+    "max_new_tokens": 320,
+    "gen": {
+      "do_sample": false
+    }
+  },
+  "versions": {
+    "transformers": "5.18.0",
+    "peft": "0.21.1",
+    "trl": "1.14.2",
+    "torch": "2.11.0+cu130"
+  },
+  "method": "LoRA（量子化なし）・用語集 SFT",
+  "data": {
+    "train": 132,
+    "train_unknown_terms": 16,
+    "test": {
+      "same": 8,
+      "reworded": 10,
+      "ungrounded": 8
+    }
+  },
+  "training": {
+    "seconds": 828,
+    "steps": 170,
+    "final_loss": 0.037623509764671326
+  },
+  "before": {
+    "label": "before",
+    "n": 26,
+    "format_rate": 0.0,
+    "content_rate": 0.0,
+    "both_rate": 0.0,
+    "content_same": 0.0,
+    "content_reworded": 0.0,
+    "content_ungrounded": 0.0,
+    "def_similarity_mean": 0.12,
+    "failures": {
+      "定義の誤り（要の語が無い）": 22,
+      "形式の崩れ": 4
+    },
+    "seconds": 123.5
+  },
+  "after": {
+    "label": "after",
+    "n": 26,
+    "format_rate": 1.0,
+    "content_rate": 0.615,
+    "both_rate": 0.615,
+    "content_same": 1.0,
+    "content_reworded": 0.7,
+    "content_ungrounded": 0.125,
+    "def_similarity_mean": 0.83,
+    "failures": {
+      "定義の誤り（要の語が無い）": 3,
+      "断定（用語集に無い語）": 7
+    },
+    "seconds": 112.6
+  },
+  "regressed": [],
+  "executed_training_myself": true
+}
